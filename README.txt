@@ -6,8 +6,8 @@ Replication files and code for Oremus, "Climate variability reduces employment i
 Download ZIP: https://github.com/koremus/NAO_NEfishemp.git
 
 SOFTWARE REQUIRED:
-STATA v15 (require user to install coefplot.ado, ranktest.ado, estout.ado, lincomest.ado, reghdfe.ado, ftools.ado, and ivreg2.ado)
-MATLAB R2015a
+STATA v15 
+R version 3.5.3
 
 SCRIPTS:
 STATA: generateFigure_1a_2.do, generateFigure_3.do (set local directory)
