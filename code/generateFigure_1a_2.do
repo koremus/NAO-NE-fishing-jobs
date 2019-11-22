@@ -27,6 +27,14 @@ set trace off
 set more off
 capture log close
 
+cap ssc install coefplot
+cap ssc install lincomest
+cap ssc install estout
+cap ssc install ranktest 
+cap ssc install reghdfe
+cap ssc install ftools
+cap ssc install ivreg2 
+
 //set local directory 
 cd ..
 
