@@ -10,9 +10,8 @@ STATA v15 (require user to install coefplot.ado, ranktest.ado, estout.ado, linco
 MATLAB R2015a
 
 SCRIPTS:
-STATA: generateFigure_1a_2.do, generateFigure_3.do
-
-R: generateFigure_1b.R
+STATA: generateFigure_1a_2.do, generateFigure_3.do (set local directory)
+R: generateFigure_1b.R (set working directory)
 
 FILE STRUCTURE:
 /code: contains all Stata and R scripts
