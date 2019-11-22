@@ -41,7 +41,7 @@ set trace off
 set more off
 capture log close
 
-//detect and set local directory 
+//set local directory 
 cd ..
 
 global inputDir "input"
