@@ -11,8 +11,8 @@
 # daily SST values in degrees Celsius over a 0.25 degree latitude by 0.25 degree longitude grid 
 # from 1/1/1981 to the present
 # https://www.esrl.noaa.gov/psd/data/gridded/data.noaa.oisst.v2.highres.html
-# Download data to input folder and save it as "sst_Reynolds.nc"
-# Dataset reduced to winter (DJFM) annual SST by grid-cell is in the input folder "sst_DJFM.csv"
+# dataset collapsed to average winter (DJFM) SST by grid-cell 
+# data located in input folder "DJFM_sst.nc"
 # accessed on January 30, 2018
 # 
 # NCAR ClimateDataGuide
