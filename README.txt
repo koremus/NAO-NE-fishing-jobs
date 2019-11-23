@@ -20,4 +20,4 @@ FILE STRUCTURE:
 /temp: for all temporary files
 
 INSTRUCTIONS:
-Run generateFigure_1a_2.do, generateFigure_3.do and generateFigure_1b.R to generate all figures in the main text.
+Set the local/working directory in generateFigure_1a_2.do, generateFigure_3.do and generateFigure_1b.R before running the files to generate all figures in the main text.
