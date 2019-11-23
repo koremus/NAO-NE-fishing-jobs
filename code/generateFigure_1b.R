@@ -11,7 +11,8 @@
 # daily SST values in degrees Celsius over a 0.25 degree latitude by 0.25 degree longitude grid 
 # from 1/1/1981 to the present
 # https://www.esrl.noaa.gov/psd/data/gridded/data.noaa.oisst.v2.highres.html
-# data located in input folder "sst_Reynolds.nc"
+# Download data to input folder and save it as "sst_Reynolds.nc"
+# Dataset reduced to winter (DJFM) annual SST by grid-cell is in the input folder "sst_DJFM.csv"
 # accessed on January 30, 2018
 # 
 # NCAR ClimateDataGuide
@@ -40,59 +41,26 @@ library("PBSmapping")
 library("data.table")
 library(ggpubr)
 
-#set working directory
-setwd("")
 rm(list=ls())
+#set working directory
+setwd("..")
 setwd("input")
-#load data
-ncfile<-nc_open("sst_Reynolds.nc")
+
+#load average winter (DJFM) SST by grid cell
+ncfile<-nc_open("DJFM_sst.nc")
 print(ncfile)
-sst<-ncvar_get(ncfile, "sst")
+sst_DJFM<-ncvar_get(ncfile, "DJFM_sst")
+
 #lon, lat, time
+yr<-ncvar_get(ncfile, "yr")
+lat<-ncvar_get(ncfile,"lat")
+lon<-ncvar_get(ncfile,"lon")
 
-time<-ncvar_get(ncfile, "T")
-lat<-ncvar_get(ncfile,"Y")
-lon<-ncvar_get(ncfile,"X")
-
-nlon<-dim(lon)
-nlat<-dim(lat)
-nt<-dim(time)
-
-for(i in 1:nlon) {
-  if(lon[i]>=180){
-    lon[i]<-(lon[i]-360);
-  }
-}
-
-#Base date is Nov 1981
-j<-11;
-k<-1981;
-
-#assign month and year to each time step
-month<-rep(0,nt);
-year<-rep(0,nt);
-for(i in 1:nt) {
-  month[i]<-j;
-  year[i]<-k;
-  if(j==12){
-    j<-1;
-    k<-k+1;
-  }
-  else{j<-j+1;}
-}
-
-#create sst average for DJFM by year
-yr<-unique(year);
-nyr<-length(yr);
-
-sst_DJFM<-array(NA, dim=c(nlon, nlat, nyr-1));
-for(i in 1:(nyr-1)){
-  sst_DJFM[,,i]<-(sst[,,12*i-10]+sst[,,12*i+1-10]+sst[,,12*i+2-10]+sst[,,12*i+3-10])/4;
-}
+nyr<-length(yr)
 
 #load NAO data
 nao<-read.csv("nao_pc_djfm_1899_2017.csv")
-min_yr<-max(yr[2], nao[1,1])
+min_yr<-max(yr[1], nao[1,1])
 max_yr<-min(yr[nyr], nao[1,length(nao[,1])])
 NAO_min_yr<-which(nao[,1]==min_yr)
 NAO_max_yr<-which(nao[,1]==max_yr)
