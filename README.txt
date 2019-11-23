@@ -3,7 +3,7 @@ Date: November 22, 2019
 
 Replication files and code for Oremus, "Climate variability reduces employment in New England fisheries", PNAS, 2019. 
 
-Download ZIP: https://github.com/koremus/NAO_NEfishemp.git
+Download ZIP: https://github.com/koremus/NAO-NE-fishing-jobs.git
 
 SOFTWARE REQUIRED:
 STATA v15 
