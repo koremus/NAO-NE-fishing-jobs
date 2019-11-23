@@ -21,10 +21,6 @@
 # data located in input folder "NAO_slp_djfm_1864_2017.csv"
 # accessed on January 10, 2019
 #**************************************************************************/
-library(png)
-library(grid)
-library(sf)
-library(maptools)
 library(raster)
 library(rgdal)
 library(dplyr)
@@ -39,7 +35,6 @@ library(sp)
 library(ggplot2)
 library("PBSmapping")
 library("data.table")
-library(ggpubr)
 
 rm(list=ls())
 #set working directory
@@ -141,18 +136,6 @@ gplot(rdjfm)+geom_tile(aes(fill=value))+
   labs(y="",x="") +
   theme_bw() +
   labs(fill="SST NAO correlation", title="", x="", y="") 
-
-gplot(rdjfm)+geom_tile(aes(fill=value))+
-  scale_fill_gradient2(low="blue", mid="white", high="red") +
-  coord_map(xlim=xlim, ylim=ylim) +
-  geom_polygon(data=worldmap,aes(X,Y,group=PID), fill = "grey85",color="white") +
-  geom_polygon(data=statemap,aes(X,Y,group=PID),fill = "grey85",color="white") +
-  geom_polygon(data = filter(statemap, region %in% states_ne),aes(X,Y,group=PID),fill = "grey85",color="orange") +
-  labs(y="",x="") +
-  geom_polygon(data = filter(statemap, region %in% states_sa),aes(X,Y,group=PID),fill = "grey85",color="green3") +
-  labs(y="",x="") +
-  theme_bw() +
-  labs(fill="correlation", title="", x="", y="")
 
 setwd("..")
 ggsave("figures/fig1b_winter_NAO_sst_corr.pdf")
