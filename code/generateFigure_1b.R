@@ -65,9 +65,8 @@ NAO_max_yr<-which(nao[,1]==max_yr)
 #resize NAO to match sst time series
 nao_DJFM<-nao[NAO_min_yr:NAO_max_yr,2]
 
-#creating time trends
+#creating time trend
 t1<-seq(1,length(nao_DJFM),1);
-t2<-t1*t1;
 
 #detrending nao
 detrendNAO<-lm(nao_DJFM~t1);
