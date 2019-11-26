@@ -59,6 +59,7 @@ global figuresDir "figures"
 global tempDir "temp"
 
 use $inputDir/bls, replace
+//omit buffer region
 drop if MA==1
 
 //totalW denotes total wages
@@ -95,6 +96,7 @@ bysort fipscode: egen obsN2 = max(temp)
 drop temp 
 summ obsN2 
 gen balancedSample2 = (obsN2 == r(max)) 
+//counties with balanced sample and same counties as fishing counties
 qui reghdfe fish L(0/6).treatment if balancedSample==1 & balancedSample2==1, a(fipscode year) cluster(fipscode)
 gen sample=1 if e(sample)
 qui eststo M2: reghdfe econ L(0/6).treatment if sample==1, a(fipscode year) cluster(fipscode)
